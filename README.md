@@ -4,10 +4,14 @@ The Ujumbe SMS SDK provides a convenient interface for .Net developers to easily
 
 ## Features
 
+- Easy to use.
 - Send single or multiple SMS messages using the Ujumbe SMS API.
 - Specify authorization details for accessing the API.
 - Optional callback function to handle the raw HTTP response.
 - Prepend country code to phone numbers (optional).
+- Validation of inputs
+- Error handling with descriptive error information messages
+- Well documented and includes concise examples
 
 ## Installation
 
