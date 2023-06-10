@@ -1,6 +1,6 @@
-# Ujumbe SMS SDK
+# .Net SDK For Ujumbe SMS
 
-The Ujumbe SMS SDK provides a convenient interface for .Net developers to easily send SMS messages using the Ujumbe SMS API. It is built in C# and handles all of the work required to dispatch SMS and only requires you provide the recipients, the message and your API key
+The .Net SDK For Ujumbe SMS provides a convenient interface for .Net developers to easily send SMS messages using the Ujumbe SMS API. It is built in C# and handles all of the work required to dispatch SMS and only requires you provide the recipients, the message and your API key
 
 ## Features
 
@@ -11,7 +11,7 @@ The Ujumbe SMS SDK provides a convenient interface for .Net developers to easily
 
 ## Installation
 
-You can install the UjumbeMessenger package via the NuGet Package Manager or by using the dotnet CLI.
+You can install the .Net SDK For Ujumbe SMS package via the NuGet Package Manager or by using the dotnet CLI.
 
 ### Package Manager
 
@@ -27,7 +27,7 @@ dotnet add package ujumbe-sms-sdk
 
 ## Usage
 
-To use the UjumbeMessenger package, follow the steps below:
+To use the .Net SDK For Ujumbe SMS package, follow the steps below:
 
 1. import the **UjumbeSmsSdk** namespace into your code
 
