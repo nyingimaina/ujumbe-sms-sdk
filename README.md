@@ -133,7 +133,7 @@ catch (Exception ex)
 
 ## API Reference
 
-[Api Reference] (./docs/index.md)
+[Api Reference](https://github.com/nyingimaina/ujumbe-sms-sdk/blob/master/docs/index.md)
 
 ## License
 
