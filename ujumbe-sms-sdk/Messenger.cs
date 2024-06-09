@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using UjumbeSmsSdk.Request;
 using UjumbeSmsSdk.Response;
 
@@ -99,6 +100,7 @@ namespace UjumbeSmsSdk
             if (response.IsSuccessStatusCode)
             {
                 var responseString = await response.Content.ReadAsStringAsync();
+                responseString = GetCleanedJsonString(responseString);
                 var ujumberResponse = JsonSerializer.Deserialize<UjumbeResponse>(responseString);
                 if (ujumberResponse != null)
                 {
@@ -112,6 +114,45 @@ namespace UjumbeSmsSdk
             else
             {
                 throw new Exception($"Unable to send message. Status code: {response.StatusCode}");
+            }
+        }
+
+        /// <summary>
+        /// This method takes a string input and attempts to find a JSON object within it.
+        /// If a JSON object is found, it is returned. If no JSON object is found, the original input is returned.
+        /// </summary>
+        /// <param name="input">The string that may or may not contain JSON. Must not be null.</param>
+        /// <returns>The JSON object that was found within the input string, or the original input string if no JSON object was found.</returns>
+        /// <exception cref="ArgumentNullException">Thrown if the input string is null.</exception>
+        private string GetCleanedJsonString(string input)
+        {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input), "Input string cannot be null");
+            }
+
+            // Define a regular expression pattern that matches a JSON object
+            // The pattern looks for a curly brace that is not part of a larger JSON object
+            // This is done using a balancing group called "open" that tracks the number of open curly braces
+            // The pattern is designed to match the entire JSON object, including surrounding curly braces
+            string pattern = @"\{(?:[^{}]|(?<open>\{)|(?<-open>\}))*(?(open)(?!))\}";
+
+            // Use Regex to find the JSON object within the input string
+            var match = Regex.Match(input, pattern, RegexOptions.Singleline);
+
+            // If a JSON object was found...
+            if (match.Success)
+            {
+                // Extract the JSON object from the input string
+                string jsonString = match.Value;
+                // Return the JSON object
+                return jsonString;
+            }
+            // If no JSON object was found...
+            else
+            {
+                // Return the original input string
+                return input;
             }
         }
     }
