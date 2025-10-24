@@ -27,13 +27,16 @@ namespace UjumbeSmsSdk.Response
         /// Gets or sets the available credits in the response.
         /// </summary>
         [JsonPropertyName("available_credits")]
-        public object AvailableCredits { get; set; } = string.Empty;
+        public string AvailableCredits { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the email of the user in the response.
         /// </summary>
         [JsonPropertyName("user_email")]
         public string UserEmail { get; set; } = string.Empty;
+
+        [JsonPropertyName("user")]
+        public string User { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the date and time information in the response.
